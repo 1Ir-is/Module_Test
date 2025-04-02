@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bai 2</title>
+  </head>
+  <body>
+    <script>
+      function kiemTraPhanSo(tu1, mau1, tu2, mau2) {
+        return tu1 * mau2 === tu2 * mau1;
+      }
+
+      function nhapPhanSo(thuTu) {
+        let phanSo;
+        let tu = "";
+        let mau = "";
+        let hopLe = false;
+
+        do {
+          phanSo = prompt(`Nhap phan so thu ${thuTu} (dinh dang tu/mau):`);
+          tu = "";
+          mau = "";
+          let coDauGach = false;
+
+          for (let i = 0; i < phanSo.length; i++) {
+            if (phanSo[i] === "/") {
+              coDauGach = true;
+            } else if (!coDauGach) {
+              tu += phanSo[i];
+            } else {
+              mau += phanSo[i];
+            }
+          }
+
+       
+          tu = parseInt(tu);
+          mau = parseInt(mau);
+
+        
+          if (!isNaN(tu) && !isNaN(mau) && mau !== 0) {
+            hopLe = true;
+          } else {
+            alert("Phan so khong hop le! Mau so phai khac 0 va nhap dung dinh dang tu/mau.");
+          }
+        } while (!hopLe);
+
+        return { tu, mau };
+      }
+
+ 
+      const phanSo1 = nhapPhanSo(1);
+      const phanSo2 = nhapPhanSo(2);
+
+      const ketQua = kiemTraPhanSo(phanSo1.tu, phanSo1.mau, phanSo2.tu, phanSo2.mau);
+      alert(
+        `Hai phan so ${phanSo1.tu}/${phanSo1.mau} va ${phanSo2.tu}/${phanSo2.mau} ${
+          ketQua ? "bang nhau" : "khong bang nhau"
+        }.`
+      );
+    </script>
+  </body>
+</html>

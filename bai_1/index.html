@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bai 1</title>
+  </head>
+  <body>
+    <script>
+      function isPrime(num) {
+        if (num < 2) return false;
+        for (let i = 2; i < num; i++) {
+          if (num % i === 0) return false;
+        }
+        return true;
+      }
+
+      let n;
+      do {
+        n = prompt("Nhap so phan tu n (n <= 50): ");
+        if (isNaN(n) || n <= 0 || n > 50 || n % 1 !== 0) {
+          alert("Vui long nhap so nguyen duong n <= 50!");
+        } else {
+          let a = [];
+          let b = [];
+
+          for (let i = 0; i < n; i++) {
+            a[i] = parseInt(prompt(`Nhap phan tu thu ${i + 1}: `));
+            if (isPrime(a[i])) {
+              b.push(a[i]);
+            }
+          }
+
+          document.write("Mang a: " + a.join(", ") + "<br>");
+          document.write("Mang b (so nguyen to): " + b.join(", ") + "<br>");
+        }
+      } while (isNaN(n) || n <= 0 || n > 50 || n % 1 !== 0);
+    </script>
+  </body>
+</html>

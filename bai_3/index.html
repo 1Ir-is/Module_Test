@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bai 3</title>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Quan Ly So Tiet Kiem</h2>
+      <section class="add-list">
+        <button id="themSoTietKiem" onclick="themSoTietKiem()">Them</button>
+        <button id="xoaSoTietKiem" onclick="xoaSoTietKiem()">Xoa</button>
+      </section>
+
+      <div>
+        <div>
+          <h2>Hien thi danh sach</h2>
+        </div>
+
+        <table border="1" cellspacing="0" cellpadding="5">
+          <thead>
+            <tr>
+              <th>Ma So</th>
+              <th>Loai Tiet Kiem</th>
+              <th>Ho Ten Khach Hang</th>
+              <th>Chung Minh Nhan Dan</th>
+              <th>Ngay Mo So</th>
+              <th>So Tien Gui</th>
+            </tr>
+          </thead>
+          <tbody id="listTable"></tbody>
+        </table>
+      </div>
+    </div>
+    <script>
+      class SoTietKiem {
+        constructor(maSo, loaiTietKiem, hoTen, cmnd, ngayMoSo, soTienGui) {
+          this.maSo = maSo;
+          this.loaiTietKiem = loaiTietKiem;
+          this.hoTen = hoTen;
+          this.cmnd = cmnd;
+          this.ngayMoSo = ngayMoSo;
+          this.soTienGui = soTienGui;
+        }
+
+        hienThiThongTin() {
+          return `
+          Day la thong tin ma ban da nhap:
+            Ma So: ${this.maSo}, 
+            Loai Tiet Kiem: ${this.loaiTietKiem}, 
+            Ho Ten: ${this.hoTen}, 
+            CMND: ${this.cmnd}, 
+            Ngay Mo So: ${this.ngayMoSo}, 
+            So Tien Gui: ${this.soTienGui} VND
+          `;
+        }
+      }
+
+      const danhSachSoTietKiem = [
+        new SoTietKiem(
+          "12345",
+          "Co Ky",
+          "Huynh Minh Huy",
+          "123456789",
+          "2025-04-02",
+          5000000
+        ),
+        new SoTietKiem(
+          "67890",
+          "Khong Ky",
+          "Tran Van Chanh",
+          "987654321",
+          "2025-04-02",
+          3000000
+        ),
+      ];
+
+      function themSoTietKiem() {
+        let maSo;
+        do {
+          maSo = prompt("Nhap Ma So (5 ky tu):");
+          if (!maSo || maSo.length > 5) {
+            alert("Ma So phai la chuoi toi da 5 ky tu!");
+          }
+        } while (!maSo || maSo.length > 5);
+
+        for (let i = 0; i < danhSachSoTietKiem.length; i++) {
+          if (danhSachSoTietKiem[i].maSo === maSo) {
+            alert("Ma So nay da ton tai trong danh sach!");
+            return;
+          }
+        }
+
+        let loaiTietKiem;
+        do {
+          loaiTietKiem = prompt("Nhap Loai Tiet Kiem (toi da 10 ky tu):");
+          if (!loaiTietKiem || loaiTietKiem.length > 10) {
+            alert("Loai Tiet Kiem phai la chuoi toi da 10 ky tu!");
+          }
+        } while (!loaiTietKiem || loaiTietKiem.length > 10);
+
+        let hoTen;
+        do {
+          hoTen = prompt("Nhap Ho Va Ten Khach Hang (toi da 30 ky tu):");
+          if (!hoTen || hoTen.length > 30) {
+            alert("Ho Ten phai la chuoi toi da 30 ky tu!");
+          }
+        } while (!hoTen || hoTen.length > 30);
+
+        let cmnd;
+        do {
+          cmnd = prompt("Nhap Chung Minh Nhan Dan (so):");
+          if (isNaN(cmnd) || !cmnd) {
+            alert("CMND phai la so!");
+          }
+        } while (isNaN(cmnd) || !cmnd);
+
+        let ngayMoSo;
+        do {
+          ngayMoSo = prompt("Nhap Ngay Mo So (yyyy-mm-dd):");
+          let hopLe = true;
+          let nam = "";
+          let thang = "";
+          let ngay = "";
+          let phanHienTai = 0;
+
+          for (let i = 0; i < ngayMoSo.length; i++) {
+            if (ngayMoSo[i] === "-") {
+              phanHienTai++;
+              if (phanHienTai > 2) {
+                hopLe = false;
+                break;
+              }
+            } else if (!isNaN(ngayMoSo[i])) {
+              if (phanHienTai === 0) {
+                nam += ngayMoSo[i];
+              } else if (phanHienTai === 1) {
+                thang += ngayMoSo[i];
+              } else if (phanHienTai === 2) {
+                ngay += ngayMoSo[i];
+              }
+            } else {
+              hopLe = false;
+              break;
+            }
+          }
+
+          if (
+            hopLe &&
+            nam.length === 4 &&
+            thang.length === 2 &&
+            ngay.length === 2 &&
+            parseInt(thang) >= 1 &&
+            parseInt(thang) <= 12 &&
+            parseInt(ngay) >= 1 &&
+            parseInt(ngay) <= 31
+          ) {
+            break;
+          } else {
+            alert("Ngay Mo So phai co dinh dang yyyy-mm-dd!");
+            ngayMoSo = null;
+          }
+        } while (!ngayMoSo);
+
+        let soTienGui;
+        do {
+          soTienGui = prompt("Nhap So Tien Gui:");
+          if (isNaN(soTienGui) || !soTienGui) {
+            alert("So Tien Gui phai la so!");
+          }
+        } while (isNaN(soTienGui) || !soTienGui);
+
+        const soTietKiem = new SoTietKiem(
+          maSo,
+          loaiTietKiem,
+          hoTen,
+          cmnd,
+          ngayMoSo,
+          soTienGui
+        );
+        danhSachSoTietKiem.push(soTietKiem);
+
+        alert(soTietKiem.hienThiThongTin());
+        capNhatBang();
+      }
+
+      function xoaSoTietKiem() {
+        const maSo = prompt("Nhap Ma So cua So Tiet Kiem can xoa:");
+        if (!maSo) {
+          alert("Ma So khong duoc de trong!");
+          return;
+        }
+
+        let found = false;
+        for (let i = 0; i < danhSachSoTietKiem.length; i++) {
+          if (danhSachSoTietKiem[i].maSo === maSo) {
+            if (
+              confirm(
+                `Ban co chac chan muon xoa So Tiet Kiem voi Ma So: ${maSo}?`
+              )
+            ) {
+              danhSachSoTietKiem.splice(i, 1);
+              found = true;
+              break;
+            } else {
+              return;
+            }
+          }
+        }
+
+        if (!found) {
+          alert("Khong tim thay So Tiet Kiem voi Ma So da nhap!");
+        } else {
+          alert("Xoa So Tiet Kiem thanh cong!");
+          capNhatBang();
+        }
+      }
+
+      function capNhatBang() {
+        const listTable = document.getElementById("listTable");
+        listTable.innerHTML = "";
+
+        for (let i = 0; i < danhSachSoTietKiem.length; i++) {
+          const soTietKiem = danhSachSoTietKiem[i];
+          listTable.innerHTML += `
+        <tr>
+          <td>${soTietKiem.maSo}</td>
+          <td>${soTietKiem.loaiTietKiem}</td>
+          <td>${soTietKiem.hoTen}</td>
+          <td>${soTietKiem.cmnd}</td>
+          <td>${soTietKiem.ngayMoSo}</td>
+          <td>${soTietKiem.soTienGui} VND</td>
+        </tr>
+          `;
+        }
+      }
+
+      capNhatBang();
+    </script>
+  </body>
+</html>
