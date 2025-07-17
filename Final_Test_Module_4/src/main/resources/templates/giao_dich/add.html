@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Thêm mới giao dịch</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container mt-4">
+    <h1 class="text-center">Thêm mới giao dịch</h1>
+    <form class="row g-3" method="post" th:action="@{/giao-dich/add}" th:object="${giaoDichDTO}">
+        <div class="col-md-6">
+            <label class="form-label" for="maGiaoDich">Mã giao dịch</label>
+            <input class="form-control" id="maGiaoDich" placeholder="MGD-XXXX" th:field="*{maGiaoDich}" type="text">
+            <div class="text-danger" th:errors="*{maGiaoDich}" th:if="${#fields.hasErrors('maGiaoDich')}"></div>
+        </div>
+        <div class="col-md-6">
+            <label class="form-label" for="khachHangId">Khách hàng</label>
+            <select class="form-select" id="khachHangId" th:field="*{khachHangId}">
+                <option disabled selected value="">Chọn khách hàng</option>
+                <option th:each="khachHang : ${khachHangList}" th:text="${khachHang.tenKhachHang}"
+                        th:value="${khachHang.id}"></option>
+            </select>
+            <div class="text-danger" th:errors="*{khachHangId}" th:if="${#fields.hasErrors('khachHangId')}"></div>
+        </div>
+        <div class="col-md-6">
+            <label class="form-label" for="loaiDichVu">Loại dịch vụ</label>
+            <div>
+                <input id="dat" th:field="*{loaiDichVu}" type="radio" value=Đất>
+                <label for="dat">Đất</label>
+                <input id="nhaDat" th:field="*{loaiDichVu}" type="radio" value="Nhà đất">
+                <label for="nhaDat">Nhà đất</label>
+            </div>
+            <div class="text-danger" th:errors="*{loaiDichVu}" th:if="${#fields.hasErrors('loaiDichVu')}"></div>
+        </div>
+        <div class="col-md-6">
+            <label class="form-label" for="ngayGiaoDich">Ngày giao dịch</label>
+            <input class="form-control" id="ngayGiaoDich" th:field="*{ngayGiaoDich}" type="date">
+            <div class="text-danger" th:errors="*{ngayGiaoDich}" th:if="${#fields.hasErrors('ngayGiaoDich')}"></div>
+        </div>
+        <div class="col-md-6">
+            <label class="form-label" for="donGia">Đơn giá (VND/m2)</label>
+            <input class="form-control" id="donGia" placeholder="500000" th:field="*{donGia}" type="number">
+            <div class="text-danger" th:errors="*{donGia}" th:if="${#fields.hasErrors('donGia')}"></div>
+        </div>
+        <div class="col-md-6">
+            <label class="form-label" for="dienTich">Diện tích (m2)</label>
+            <input class="form-control" id="dienTich" placeholder="20" th:field="*{dienTich}" type="number">
+            <div class="text-danger" th:errors="*{dienTich}" th:if="${#fields.hasErrors('dienTich')}"></div>
+        </div>
+        <div class="col-12">
+            <button class="btn btn-primary" type="submit">Lưu</button>
+            <a class="btn btn-secondary" th:href="@{/giao-dich}">Hủy</a>
+        </div>
+    </form>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

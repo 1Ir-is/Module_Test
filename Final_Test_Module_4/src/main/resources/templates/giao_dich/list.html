@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Danh sách giao dịch nhà đất</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container mt-4">
+    <h1 class="text-center">Danh sách giao dịch nhà đất</h1>
+    <form class="row g-3 mb-4" method="get" th:action="@{/giao-dich/search}">
+        <div class="col-md-5">
+            <input class="form-control" name="tenKhachHang" placeholder="Tên khách hàng" type="text">
+        </div>
+        <div class="col-md-5">
+            <input class="form-control" name="loaiDichVu" placeholder="Loại bất động sản" type="text">
+        </div>
+        <div class="col-md-2">
+            <button class="btn btn-primary w-100" type="submit">Tìm kiếm</button>
+        </div>
+    </form>
+    <table class="table table-bordered table-striped">
+        <thead class="table-dark">
+        <tr>
+            <th>Mã giao dịch</th>
+            <th>Tên khách hàng</th>
+            <th>Loại dịch vụ</th>
+            <th>Ngày giao dịch</th>
+            <th>Đơn giá (VND/m2)</th>
+            <th>Diện tích (m2)</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="giaoDich : ${giaoDichList}">
+            <td th:text="${giaoDich.maGiaoDich}"></td>
+            <td th:text="${giaoDich.khachHang.tenKhachHang}"></td>
+            <td th:text="${giaoDich.loaiDichVu}"></td>
+            <td th:text="${#temporals.format(giaoDich.ngayGiaoDich, 'dd/MM/yyyy')}"></td>
+            <td th:text="${giaoDich.donGiaFormatted}"></td>
+            <td th:text="${giaoDich.dienTichFormatted}"></td>
+            <td>
+                <a class="btn btn-info btn-sm" th:href="@{/giao-dich/details/{id}(id=${giaoDich.id})}">Chi tiết</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <a class="btn btn-success" th:href="@{/giao-dich/add}">Thêm mới</a>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
