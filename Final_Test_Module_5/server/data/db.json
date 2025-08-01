@@ -1,0 +1,144 @@
+{
+  "books": [
+    {
+      "id": 1,
+      "bookCode": "BO-0001",
+      "title": "Lập trình JavaScript cơ bản",
+      "categoryId": 1,
+      "importDate": "15/01/2025",
+      "quantity": 25
+    },
+    {
+      "id": 2,
+      "bookCode": "BO-0002",
+      "title": "React và Node.js thực chiến",
+      "categoryId": 1,
+      "importDate": "15/01/2025",
+      "quantity": 18
+    },
+    {
+      "id": 3,
+      "bookCode": "BO-0003",
+      "title": "Cơ sở dữ liệu MySQL",
+      "categoryId": 1,
+      "importDate": "15/01/2025",
+      "quantity": 30
+    },
+    {
+      "id": 4,
+      "bookCode": "BO-0004",
+      "title": "Đắc Nhân Tâm",
+      "categoryId": 2,
+      "importDate": "15/01/2025",
+      "quantity": 40
+    },
+    {
+      "id": 5,
+      "bookCode": "BO-0005",
+      "title": "Nghệ thuật lãnh đạo",
+      "categoryId": 2,
+      "importDate": "15/01/2025",
+      "quantity": 22
+    },
+    {
+      "id": 6,
+      "bookCode": "BO-0006",
+      "title": "Lịch sử Việt Nam",
+      "categoryId": 3,
+      "importDate": "15/01/2025",
+      "quantity": 35
+    },
+    {
+      "id": 7,
+      "bookCode": "BO-0007",
+      "title": "Thế giới phẳng",
+      "categoryId": 3,
+      "importDate": "15/01/2025",
+      "quantity": 15
+    },
+    {
+      "bookCode": "BO-4000",
+      "title": "UMBLA",
+      "categoryId": 2,
+      "importDate": "10/05/2005",
+      "quantity": 10,
+      "id": 8
+    },
+    {
+      "bookCode": "BO-5000",
+      "title": "IVE",
+      "categoryId": 2,
+      "importDate": "31/07/2025",
+      "quantity": 14,
+      "id": 9
+    },
+    {
+      "bookCode": "BO-6000",
+      "title": "Twice",
+      "categoryId": 1,
+      "importDate": "29/07/2025",
+      "quantity": 50,
+      "id": 10
+    },
+    {
+      "bookCode": "BO-1234",
+      "title": "BlackPink",
+      "categoryId": 1,
+      "importDate": "31/07/2025",
+      "quantity": 10,
+      "id": 11
+    },
+    {
+      "bookCode": "BO-2345",
+      "title": "BTS",
+      "categoryId": 3,
+      "importDate": "28/07/2025",
+      "quantity": 45,
+      "id": 12
+    },
+    {
+      "bookCode": "BO-0123",
+      "title": "Less",
+      "categoryId": 3,
+      "importDate": "30/07/2025",
+      "quantity": 12,
+      "id": 13
+    },
+    {
+      "bookCode": "BO-7890",
+      "title": "NAM MO",
+      "categoryId": 1,
+      "importDate": "31/07/2025",
+      "quantity": 123,
+      "id": 14
+    },
+    {
+      "bookCode": "BO-0987",
+      "title": "HUY",
+      "categoryId": 1,
+      "importDate": "30/07/2025",
+      "quantity": 1234,
+      "id": 15
+    }
+  ],
+  "categories": [
+    {
+      "id": 1,
+      "categoryCode": "TECH",
+      "categoryName": "Công nghệ thông tin",
+      "description": "Sách về lập trình, phát triển phần mềm, cơ sở dữ liệu và các công nghệ hiện đại"
+    },
+    {
+      "id": 2,
+      "categoryCode": "SKILL",
+      "categoryName": "Kỹ năng mềm",
+      "description": "Sách về phát triển bản thân, kỹ năng giao tiếp, lãnh đạo và quản lý"
+    },
+    {
+      "id": 3,
+      "categoryCode": "HIST",
+      "categoryName": "Lịch sử - Địa lý",
+      "description": "Sách về lịch sử, địa lý, văn hóa và xã hội"
+    }
+  ]
+}
